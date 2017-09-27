@@ -1,0 +1,86 @@
+// Variables
+@import "variables";
+
+.navbar{
+  margin-bottom: 0px;
+}
+.big-padding{
+  padding:30px;
+}
+
+.blue-grey{
+  background-color:#37474f;
+}
+
+.white-text{
+  color: white;
+}
+
+.table{
+  background-color: white;
+}
+
+
+.product{
+  width: 600px;
+  max-width: 100%;
+  padding: 1em;
+  position: relative;
+
+  h1{
+    padding-bottom: 10px;
+    border-bottom: solid 1px;
+  }
+
+  .actions{
+    right: 1em;
+    top: 1px;
+  }
+  
+}
+
+  .large-padding{
+    padding: 10px 15px;
+  }
+
+  .big-padding{
+    padding:20px;
+  }
+
+  .top-space{
+    margin-top: 1em;
+  }
+
+  .absolute{
+    position: absolute;
+  }
+
+  .sale-data{
+    padding: 1em;
+    text-align: center;
+    border-right: solid 1px #222;
+    span{
+      display: block;
+      font-size: 2.2em;
+      color: #3f51b5;
+    }
+  }
+
+  .product-avatar{
+    max-width: 100%;
+  }
+
+  .products-container{
+    .product{
+      margin-top: 1em;
+    }
+  }
+
+
+  //status order
+
+  .creado{
+    background-color: #d4e157;
+  }
+
+  
