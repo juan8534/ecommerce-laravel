@@ -1,14 +1,14 @@
 @extends('layouts.app')
 @section('content')
-  <div class="big-padding text-center blue-grey white-tet">
-    <h1>Tu carrito de compras</h1>
+  <div class="#00897b teal darken-1 white-text">
+    <h4 class="center big-padding">Tu carrito de compras</h4>
   </div>
   <div class="container">
-    <table class="table table-bordered">
+    <table class="responsive-table">
       <thead>
         <tr>
-          <td>Producto</td>
-          <td>Precio</td>
+          <td><h5>Producto</h5></td>
+          <td><h5>Precio</h5></td>
         </tr>
       </thead>
       <tbody>
@@ -24,7 +24,9 @@
        </tr>
       </tbody>
     </table>
-    <div class="text-right">
+    <br>
+    <br>
+    <div class="right-align">
       @include('shopping_carts.form')
     </div>
   </div>

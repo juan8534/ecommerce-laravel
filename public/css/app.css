@@ -1,9 +1,5 @@
-.navbar {
-  margin-bottom: 0px;
-}
-
-.big-padding {
-  padding: 30px;
+.navigator {
+  margin-bottom: 10px;
 }
 
 .blue-grey {
@@ -19,13 +15,13 @@
 }
 
 .product {
-  width: 600px;
-  max-width: 100%;
+  width: 800px;
+  max-height: 100%;
   padding: 1em;
-  position: relative;
+  
 }
 
-.product h1 {
+.product h3 {
   padding-bottom: 10px;
   border-bottom: solid 1px;
 }
@@ -40,7 +36,8 @@
 }
 
 .big-padding {
-  padding: 20px;
+  padding: 10px;
+  margin-top: 0px;
 }
 
 .top-space {
@@ -64,7 +61,8 @@
 }
 
 .product-avatar {
-  max-width: 100%;
+  width: 350px;
+  height: 200px;
 }
 
 .products-container .product {
@@ -73,6 +71,13 @@
 
 .creado {
   background-color: #d4e157;
+}
+.td-left{
+  padding-left:40px
+}
+
+.td-right{
+  padding-right:10px
 }
 
 /*# sourceMappingURL=app.css.map */

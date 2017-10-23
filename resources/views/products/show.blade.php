@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-  <div class="container text-center">
+  <div class="container center-left">
     @include("products.product", ["product" => $product])
   </div>
 @endsection

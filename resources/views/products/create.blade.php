@@ -2,7 +2,7 @@
 
 @section('content')
   <div class="container white">
-    <h1>Nuevo producto</h1>
+    <h4>Nuevo producto</h4>
     @include('products.form', ['product' => $product, 'url' => '/products', 'method' => 'POST' ])
   </div>
 @endsection

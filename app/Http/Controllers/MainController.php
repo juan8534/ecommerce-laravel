@@ -12,7 +12,7 @@ class MainController extends Controller
 {
     public function home()
     {
-        $products = Product::all();
+        $products = Product::latest()->paginate(4);
 
         return view('main.home', ["products" => $products]);
     }

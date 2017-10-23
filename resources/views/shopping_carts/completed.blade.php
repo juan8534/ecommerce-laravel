@@ -1,13 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
-  <header class="big-padding text-center blue-grey white-text">
-    <h1>Compra completada</h1>
-  </header>
-
+<div class="#00897b teal darken-1 white-text">
+    <h4 class="center big-padding">Recibo de pago</h4>
+  </div>
   <div class="container">
     <div class="card large-padding">
-      <h3>Tu pago fue procesado <span class="{{ $order->status }}">{{$order->status}}</span></h3>
+      <h4>Tu pago fue procesado <span class="{{ $order->status }}">{{$order->status}}</span></h4>
       <p>Verifica los detalles de tu envio:</p>
       <div class="row large-padding">
         <div class="col-xs-6">Correo</div>
