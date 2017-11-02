@@ -161,7 +161,8 @@ return [
         Illuminate\Session\SessionServiceProvider::class,
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
-        Illuminate\View\ViewServiceProvider::class,
+        Illuminate\View\ViewServiceProvider::class,        
+        
 
         /*
          *Providers personales
@@ -169,6 +170,8 @@ return [
         Collective\Html\HtmlServiceProvider::class,
         App\Providers\ShoppingCartProvider::class,
         Anouar\Paypalpayment\PaypalpaymentServiceProvider::class,
+        Jleon\LaravelPnotify\NotifyServiceProvider::class,
+        UxWeb\SweetAlert\SweetAlertServiceProvider::class,
         //
 
         /*
@@ -231,6 +234,9 @@ return [
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
         'PaypalPayment' => Anouar\Paypalpayment\Facades\PaypalPayment::class,
+        'Notify' => Jleon\LaravelPnotify\Notify::class,
+        'Alert' => UxWeb\SweetAlert\SweetAlert::class,
+        
 
 
     ],

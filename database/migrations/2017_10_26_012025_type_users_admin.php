@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddColumnExtensionToProducts extends Migration
+class TypeUsersAdmin extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,9 @@ class AddColumnExtensionToProducts extends Migration
      */
     public function up()
     {
-        Schema::table('products', function($table){
-            $table->string('extension')->nullable();
+        
+        Schema::table('users', function($table){
+            $table->enum('type', ['member', 'admin'])->default('member');
         });
     }
 

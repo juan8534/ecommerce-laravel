@@ -16,6 +16,8 @@ Route::get('/', 'MainController@home'); //Ruta generada para la vista principal
 Route::get('/carrito', 'ShoppingCartsController@index');
 Route::post('/carrito', 'ShoppingCartsController@checkout');
 
+//Route::group(['middleware' => 'admin'],function(){
+      
 
 Route::get('/payments/store', 'PaymentsController@store');
 
@@ -23,6 +25,16 @@ Route::get('/payments/store', 'PaymentsController@store');
 Auth::routes();
 
 Route::resource('products','ProductsController');// Ruta para el controlador de productos
+Route::delete('products/{id}/destroy',[
+      'uses' => 'ProductsController@destroy',
+      'as'   => 'products.destroy'
+]);
+
+Route::resource('users','UsersController');
+Route::delete('users/{id}/destroy',[
+      'uses' => 'UsersController@destroy',
+      'as'   => 'users.destroy'
+]);
 
 Route::resource('in_shopping_carts','InShoppingCartsController', [
       'only' => ['store', 'destroy'] //Ruta resource solo para metodos de actualizacion y de eliminacion
@@ -38,7 +50,7 @@ Route::resource('orders', 'OrdersController', [
 
 Route::post('orders/update/{id}', ['as' => 'orders/update', 'uses' => 'OrdersController@update']);
 
-
+//});      
 Route::get('/home', 'HomeController@index');
 
 Route::get('products/images/{filename}', function($filename){

@@ -15,6 +15,7 @@
     <link type="text/css" rel="stylesheet" href="/ecommerce/public/plugins/css/materialize.min.css"  media="screen,projection"/>
     <link type="text/css" rel="stylesheet" href="/ecommerce/public/css/app.css"  media="screen,projection"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/css/bootstrap-editable.css" rel="stylesheet">
+    <link rel="stylesheet" href="/ecommerce/public/plugins/css/sweetalert.css">
     <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link href="{{ url('/css/app.css') }}" rel="stylesheet">
@@ -52,7 +53,17 @@
                     <li><a href="{{ url('/') }}">Productos</a></li>                    
                     <!-- Dropdown Trigger -->                    
                 </ul>
+                    {{--  @if (Auth::user()->admin()) <!--Solo el usuario miembro puede crear articulos-->  --}}
                 <ul class="right">
+                    <li>
+                        <i class="material-icons">account_circle</i>
+                    </li>
+                    <li>
+                        <a href="{{ url('/users')}}">                            
+                                Usuarios
+                        </a>
+                    </li>
+
                     <li>
                         <i class="material-icons">class</i>
                     </li>
@@ -70,6 +81,7 @@
                                 Administrar productos
                         </a>
                     </li>
+                    {{--  @endif                  --}}
                     <li>
                         <i class="material-icons">shopping_cart</i>
                     </li>
@@ -89,14 +101,15 @@
                 </ul>
             </div>
         </nav>
-        @yield('content')
+        @yield('content')    
+                     
     </div>
 
     <!-- Scripts -->
-    <script type="text/javascript" src="/ecommerce/public/plugins/jquery/jquery-3.2.1.min.js"></script>   
-    <script type="text/javascript" src="/ecommerce/resources/assets/js/app.js"></script>
+    <script type="text/javascript" src="/ecommerce/public/plugins/jquery/jquery-3.2.1.min.js"></script>       
     <script type="text/javascript" src="/ecommerce/public/plugins/js/materialize.js"></script> 
-   
-    
+    <script src="/ecommerce/public/plugins/js/sweetalert.min.js"></script>
+    <script type="text/javascript" src="/ecommerce/resources/assets/js/app.js"></script>
+    @include('sweet::alert')
 </body>
 </html>

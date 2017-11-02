@@ -20,27 +20,35 @@
         @foreach ($products as $product)
           <tr>
             <td>{{ $product->id }}</td>
-            <td>{{ $product->title }}</td>
-            <td>{{ $product->description }}</td>
+            <td>{{ $product->title }}</td>            
+            <td>{{str_limit($product->description, $limit = 40, $end = '...')}}</td>
             <td>{{ $product->pricing }}</td>
             <td class="td-left">
               <a href="{{ url("/products/$product->id")}}" class="btn blue">
                 <li class= "material-icons ">
                     remove_red_eye
                 </li>
-              </a>
+              </a> 
             </td>
-            <td>
+            <td>           
               <a href="{{ url('/products/'.$product->id.'/edit')}}" class="btn green">
                 <li class= "material-icons">
                     mode_edit
                 </li>
               </a>
-            </td>
-            <td class="td-right">
-              @include('products.delete',['product' => $product])
+            </td>                        
+              <td >              
+                {!! Form::open(['route' => ['products.destroy',$product->id], 'method' => 'delete','class'=>'delete_product']) !!}
+                  <button class="btn red delete-product">
+                    <li class= "material-icons">
+                    delete
+                    </li>
+                  </button>
+                {!! Form::close() !!}                                                      
+                </td>        
             </td>
           </tr>
+          @include('modals.modalproducts')
         @endforeach
       </tbody>
     </table>

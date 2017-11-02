@@ -54,5 +54,6 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'shoppingcart' => \App\Http\Middleware\BuildShoppingCart::class,
         'first.user' => \App\Http\Middleware\ValidateFirstUserSignUp::class,
+        'admin' => \App\Http\Middleware\Admin::class,
     ];
 }

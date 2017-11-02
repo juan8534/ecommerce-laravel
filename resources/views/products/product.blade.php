@@ -22,7 +22,11 @@
                         </a>
                     </div>
                     <div class="col s3">
-                        @include('products.delete',['product' => $product])
+                        <a href="{{ route('products.destroy', $product->id )}}" class="btn red">
+                            <li class= "material-icons">
+                            delete
+                            </li>
+                        </a>   
                     </div>
                     @endif
                     <div class="col s3">

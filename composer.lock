@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "78ca8c54ae7d077cb960b819fc490ba7",
-    "content-hash": "b882613132f71793cbbed5ca5828ed01",
+    "hash": "9d3b4aad7b818f80b7d5c6b2e58ccfb4",
+    "content-hash": "fcf4d225b6e24abb1084e0950e60add3",
     "packages": [
         {
             "name": "anouar/paypalpayment",
@@ -2018,6 +2018,67 @@
             "time": "2017-01-24 13:02:38"
         },
         {
+            "name": "uxweb/sweet-alert",
+            "version": "1.4.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/uxweb/sweet-alert.git",
+                "reference": "92519b916755d673f92343767edd06110b167d05"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/uxweb/sweet-alert/zipball/92519b916755d673f92343767edd06110b167d05",
+                "reference": "92519b916755d673f92343767edd06110b167d05",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/session": "~5.0",
+                "illuminate/support": "~5.0",
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "^0.9.5",
+                "phpunit/phpunit": "^5.5"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "UxWeb\\SweetAlert\\SweetAlertServiceProvider"
+                    ],
+                    "aliases": {
+                        "Alert": "UxWeb\\SweetAlert\\SweetAlert"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "UxWeb\\SweetAlert\\": "src/SweetAlert/"
+                },
+                "files": [
+                    "src/SweetAlert/functions.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Uziel Bueno",
+                    "email": "ux.webs@gmail.com"
+                }
+            ],
+            "description": "A simple PHP package to show Sweet Alerts with the Laravel Framework",
+            "keywords": [
+                "alert",
+                "laravel",
+                "notifier",
+                "sweet"
+            ],
+            "time": "2017-09-10 17:14:08"
+        },
+        {
             "name": "vlucas/phpdotenv",
             "version": "v2.4.0",
             "source": {
@@ -2217,6 +2278,34 @@
                 "test"
             ],
             "time": "2015-05-11 14:41:42"
+        },
+        {
+            "name": "jorgejavierleon/laravelpnotify",
+            "version": "1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/jorgejavierleon/LaravelPnotify.git",
+                "reference": "623bb6b374e57266369722d1344a809a10d73c9a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/jorgejavierleon/LaravelPnotify/zipball/623bb6b374e57266369722d1344a809a10d73c9a",
+                "reference": "623bb6b374e57266369722d1344a809a10d73c9a",
+                "shasum": ""
+            },
+            "require-dev": {
+                "benconstable/phpspec-laravel": "~2.0",
+                "phpspec/phpspec": "~2.0",
+                "phpunit/phpunit": "4.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Jleon\\LaravelPnotify\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "time": "2015-09-25 11:57:01"
         },
         {
             "name": "mockery/mockery",

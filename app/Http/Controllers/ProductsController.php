@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Product;
 use Illuminate\Support\Facades\Auth;
+use Alert;
 
 class ProductsController extends Controller
 {
@@ -64,6 +65,7 @@ class ProductsController extends Controller
           if ($hasFile) {
             $request->cover->storeAs('images', "$product->id.$extension");
           }
+          Alert::success('Producto creado correctamente!!!');          
           return redirect("/products");
         }else {
           return redirect("/products/create");
@@ -91,7 +93,7 @@ class ProductsController extends Controller
      */
     public function edit($id)
     {
-      $product = Product::find($id); //Buscamos el producto para editarlo
+      $product = Product::find($id); //Buscamos el producto para editarlo      
       return view("products.edit",['product' => $product]); //Lo pasamos a la vista
     }
 
@@ -111,6 +113,7 @@ class ProductsController extends Controller
       $product->pricing = $request->pricing;
 
       if($product->save()){
+        Alert::success('Producto editado correctamente!!!');          
         return redirect("/products");
       }else {
         return view("products.edit",['product' => $product]); //Lo pasamos a la vista
@@ -125,7 +128,9 @@ class ProductsController extends Controller
      */
     public function destroy($id)
     {
-        Product::destroy($id); //Se encuentra el producto que se desea eliminar
+        $product = Product::find($id); //Se encuentra el producto que se desea eliminar
+        $product->delete();
+     //   Alert::success('Producto eliminado correctamente!!!');          
         return redirect('/products');
     }
 }
