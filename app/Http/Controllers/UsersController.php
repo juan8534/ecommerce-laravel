@@ -11,6 +11,7 @@ class UsersController extends Controller
 {
     public function __construct(){
         $this->middleware("auth");
+        $this->middleware("admin");
     }
     /**
      * Display a listing of the resource.
@@ -101,7 +102,7 @@ class UsersController extends Controller
     {
         $user = User::find($id);
         $user->delete();
-       // Alert::success('Usuario Eliminado correctamente!!!');
+        Alert::success('Usuario Eliminado correctamente!!!');
         return redirect()->route('users.index');
     }
 }

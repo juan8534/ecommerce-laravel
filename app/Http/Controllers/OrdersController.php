@@ -24,9 +24,10 @@ class OrdersController extends Controller
 
         $totalMonth = Order::totalMonth();
         $totalMonthCount = Order::totalMonthCount();
+        $totalSales = Order::totalSales();
 
         return view('orders.index', ['orders' => $orders, 'totalMonth' => $totalMonth,
-        'totalMonthCount' => $totalMonthCount]);
+        'totalMonthCount' => $totalMonthCount, 'totalSales' => $totalSales]);
 
     }
 

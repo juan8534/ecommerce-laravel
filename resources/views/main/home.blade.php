@@ -18,7 +18,7 @@
             </div>
             <div class="s12 m6">
               <h4>Precio: {{ $product->pricing}} </h4>               
-                {!! Form::open(['url' => '/in_shopping_carts', 'method' => 'POST', "class" => "inline-block"]) !!}
+                {!! Form::open(['url' => '/in_shopping_carts', 'method' => 'POST', "class" => "add-to-cart inline-block"]) !!}
                   <input type="hidden" name="product_id" value="{{ $product->id }}">
                   <button class="btn waves-effect waves-light" type="submit" name="action">
                     Añadir al carrito                

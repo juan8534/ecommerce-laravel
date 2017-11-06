@@ -23,15 +23,16 @@ class Admin
     }
 
     public function handle($request, Closure $next)
-    {
-   /*       if(\Auth::user()->type == 'admin')
+    {   
+        
+       //dd(Auth::check() && Auth::check());
+    if(Auth::check() && Auth::user()->type == "admin")
         {
         return $next($request);
+        }                    
+        //return redirect()->guest('/');                
+    else{
+         abort(401);        
         }
-        else
-        {
-          abort(401);
-        }  */
-
     }
 }

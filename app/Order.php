@@ -57,11 +57,15 @@ class Order extends Model
     }
 
     public static function  totalMonth(){
-        return Order::monthly()->sum("total") / 100;
+        return Order::monthly()->sum("total");
     }
 
     public static function  totalMonthCount(){
         return Order::monthly()->count("total");
+    }
+
+    public static function totalSales(){
+        return Order::sum('total');
     }
 
 }

@@ -1,6 +1,7 @@
 <?php
 
 namespace App;
+use Alert;
 
 
 class Paypal

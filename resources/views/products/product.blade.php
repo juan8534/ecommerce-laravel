@@ -15,7 +15,7 @@
                     </p>                
                 </div>
                 <div class="row">
-                    @if(Auth::check() && $product->user_id == Auth::user()->id)
+                    @if(Auth::check() && Auth::user()->type == "admin")
                     <div class="col s6 right-align">
                         <a href="{{ url("/products/".$product->id."/edit")}}" class="btn blue">
                             <i class="material-icons">edit</i>

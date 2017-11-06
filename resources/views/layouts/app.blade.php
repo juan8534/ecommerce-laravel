@@ -53,7 +53,16 @@
                     <li><a href="{{ url('/') }}">Productos</a></li>                    
                     <!-- Dropdown Trigger -->                    
                 </ul>
-                    {{--  @if (Auth::user()->admin()) <!--Solo el usuario miembro puede crear articulos-->  --}}
+                @if (Auth::check()) <!--Solo el usuario miembro puede crear articulos-->  
+                 <ul class="right">  
+                    <li>
+                        <a class="dropdown-button right-align" href="#!" data-activates="dropdown1" 
+                        aria-haspopup="true" aria-expanded="false" >{{ Auth::user()->name }}
+                            <i class="material-icons right">arrow_drop_down</i>
+                        </a>
+                    </li>   
+                </ul>         
+                @if(Auth::user()->type == "admin")                                        
                 <ul class="right">
                     <li>
                         <i class="material-icons">account_circle</i>
@@ -81,7 +90,9 @@
                                 Administrar productos
                         </a>
                     </li>
-                    {{--  @endif                  --}}
+                @endif   
+                </ul>   
+                <ul class="right">           
                     <li>
                         <i class="material-icons">shopping_cart</i>
                     </li>
@@ -89,16 +100,34 @@
                         <a href="{{ url('/carrito')}}">                            
                                 Mi carrito
                             <span class="circle-shopping-cart">
-                                {{$productsCount}} <!-- Muestra cuantos productos lleva el usuario en el carrito de compras-->
+                                 {{$productsCount}} <!-- Muestra cuantos productos lleva el usuario en el carrito de compras-->
                             </span>
                         </a>
-                    </li>
+                    </li>                                    
+                </ul>                  
+                    @else          
+                <ul class="right">
                     <li>
                         <a class="dropdown-button" href="#!" data-activates="dropdown1">Acciones
                             <i class="material-icons right">arrow_drop_down</i>
                         </a>
-                    </li>
+                    </li>                        
+                    
                 </ul>
+                    <ul class="right">           
+                    <li>
+                        <i class="material-icons">shopping_cart</i>
+                    </li>
+                    <li>
+                        <a href="{{ url('/carrito')}}">                            
+                                Mi carrito
+                            <span class="circle-shopping-cart">
+                                 {{$productsCount}} <!-- Muestra cuantos productos lleva el usuario en el carrito de compras-->
+                            </span>
+                        </a>
+                    </li>                                    
+                </ul>
+                @endif
             </div>
         </nav>
         @yield('content')    

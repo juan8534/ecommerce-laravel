@@ -57,7 +57,7 @@ class ShoppingCart extends Model
 
     public function totalUSD()
     {
-        return $this->products()->sum('pricing') / 100;
+        return $this->products()->sum('pricing');
     }
 
     // Metodo para buscar un carrito o crearlo

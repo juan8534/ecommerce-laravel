@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Product;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Database\QueryException;
 use Alert;
 
 class ProductsController extends Controller
@@ -128,9 +129,15 @@ class ProductsController extends Controller
      */
     public function destroy($id)
     {
+      try{
         $product = Product::find($id); //Se encuentra el producto que se desea eliminar
         $product->delete();
-     //   Alert::success('Producto eliminado correctamente!!!');          
+        Alert::success('Producto eliminado correctamente!!!');          
         return redirect('/products');
+      } catch(QueryException $ex){
+        //dd($ex->getMessage());
+        Alert::warning('El producto no se puede eliminar');   
+        return redirect('/products');       
+      }        
     }
 }

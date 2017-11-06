@@ -7,6 +7,7 @@ use App\Http\Requests;
 use App\ShoppingCart;
 use App\Paypal;
 use App\Order;
+use Alert;
 
 class ShoppingCartsController extends Controller
 {
@@ -38,7 +39,13 @@ class ShoppingCartsController extends Controller
     /*Funcion  que ejecuta el metod para dirigirce a paypal*/
     public function checkout(Request $request){
         $shopping_cart = $request->shopping_cart;
-
+        $products = $shopping_cart->products()->get(); 
+        $total = $shopping_cart->total();
+        
+        if($total == 0){
+            Alert::warning('El carrito de compras esta vacio');
+            return view('shopping_carts.index', ['products' => $products, 'total' => $total ]); 
+        }
         $paypal = new Paypal($shopping_cart);
 
          $payment = $paypal->generate();

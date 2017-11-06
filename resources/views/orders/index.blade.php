@@ -8,16 +8,20 @@
     <div class="panel-body">
       <h3 class="center">Estadisticas</h3>
         <div class="row">
-            <div class="col-xs-4 col-md-3 sale-data">
+            <div class="col s4 sale-data">
               <span>{{$totalMonth}} USD</span>
-              Ingresos del mes
+              Ingresos del {{date('M')}}
             </div>
-            <div class="col-xs-4 col-md-3  sale-data">
+            <div class="col s4   sale-data">
               <span>{{$totalMonthCount}} USD</span>
-              Numero de Ventas
+              Numero de {{date('M')}} 
+            </div>
+            <div class="col s4   sale-data">
+              <span> {{$totalSales}} USD</span>
+              Total ingresos
             </div>
          </div>
-      <h3>Ventas</h3>
+      <h3 class="center-align">Ventas</h3>
       <table class="table table-bordered">
         <thead>
           <tr>

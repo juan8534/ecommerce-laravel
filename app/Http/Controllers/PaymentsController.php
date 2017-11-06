@@ -22,7 +22,6 @@ class PaymentsController extends Controller
 
       $paypal = new Paypal($shopping_cart);
       $response = $paypal->execute($request->paymentId, $request->PayerID);
-
       if ($response->state == "approved") {
          \Session::remove('shopping_cart_id'); //Si aprueba la compra elimina del contador del carrito de compras
         $order = Order::createFromPayPalResponse($response, $shopping_cart);

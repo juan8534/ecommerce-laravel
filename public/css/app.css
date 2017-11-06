@@ -80,4 +80,35 @@
   padding-bottom: 1em;
 }
 
+.circle-shopping-cart{
+  background-color: rgb(3, 48, 31);
+  border-radius: 50%;
+  padding: 0.5em 1em;
+}
+
+.highlight{
+  -webkit-animation: highlight 1.5s;
+  animation: highlight 1.5s;
+}
+
+@-webkit-keyframes highlight{
+  50% {
+    background-color: #ffff00;
+    color: black;
+  }
+  100%{
+    background-color: inherit;
+  }
+}
+
+@keyframes highlight {
+  50%{
+    background-color: #ffff00;
+    color: black;
+  }
+  100%{
+    backface-color: inherit;
+  }
+}
+
 /*# sourceMappingURL=app.css.map */
