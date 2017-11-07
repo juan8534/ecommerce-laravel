@@ -16,7 +16,7 @@ Route::get('/', 'MainController@home'); //Ruta generada para la vista principal
 Route::get('/carrito', 'ShoppingCartsController@index');
 Route::post('/carrito', 'ShoppingCartsController@checkout');
 Auth::routes();
-Route::get('products/{id}', 'ProductsController@show'); 
+/* Route::get('products/{id}', 'ProductsController@show');  */
 
 /* Route::get('products/{id}', 'ProductsController@show'); */
 Route::resource('compras', 'ShoppingCartsController',[
