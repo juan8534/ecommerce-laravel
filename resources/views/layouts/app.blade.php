@@ -12,8 +12,8 @@
 
     <!-- Styles -->
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/icon?family=Material+Icons ">
-    <link type="text/css" rel="stylesheet" href="/ecommerce/public/plugins/css/materialize.min.css"  media="screen,projection"/>
-    <link type="text/css" rel="stylesheet" href="/ecommerce/public/css/app.css"  media="screen,projection"/>
+    <link type="text/css" rel="stylesheet" href="../plugins/css/materialize.min.css"  media="screen,projection"/>
+    <link type="text/css" rel="stylesheet" href="../public/css/app.css"  media="screen,projection"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/css/bootstrap-editable.css" rel="stylesheet">
     <link rel="stylesheet" href="/ecommerce/public/plugins/css/sweetalert.css">
     <!--Let browser know website is optimized for mobile-->
