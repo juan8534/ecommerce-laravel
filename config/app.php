@@ -169,8 +169,7 @@ return [
          */
         Collective\Html\HtmlServiceProvider::class,
         App\Providers\ShoppingCartProvider::class,
-        Anouar\Paypalpayment\PaypalpaymentServiceProvider::class,
-        Jleon\LaravelPnotify\NotifyServiceProvider::class,
+        Anouar\Paypalpayment\PaypalpaymentServiceProvider::class,        
         UxWeb\SweetAlert\SweetAlertServiceProvider::class,
         //
 
