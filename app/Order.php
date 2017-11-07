@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\OrderCreated;
+use Auth;
 
 class Order extends Model
 {
@@ -12,7 +13,12 @@ class Order extends Model
                             'email', 'shopping_cart_id', 'status', 'total', 'guide_number'];
     
     public function sendMail(){
-        Mail::to("juanpablo8534@gmail.com")->send(new OrderCreated($this));
+        if(Auth::check()){
+            Mail::to(Auth::user()->email)->send(new OrderCreated($this));
+        }else{
+            Mail::to('email')->send(new OrderCreated($this));
+        }
+        
     }                
 
     public function shoppingCartID(){

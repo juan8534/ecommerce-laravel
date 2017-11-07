@@ -86,6 +86,7 @@ class UsersController extends Controller
     {
         $user = User::find($id);
         $user->fill($request->all());
+        $user->password = bcrypt($request->password);
         $user->save();
         Alert::success('Usuario Editado correctamente!!!');
         return redirect()->route('users.index');

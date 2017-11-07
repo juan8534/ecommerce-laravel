@@ -3,8 +3,8 @@
 return array(
 	# Account credentials from developer portal
 	'Account' => array(
-		'ClientId' => env('PAYPAL_CLIENT_ID', 'AbC0uKh6dCcwE4gcumASz2hDDNcbAxR84gmlhWpGr4GgCMgNqkX4lRgdjTcdGK42xetf80KJkmvD6vGi'),
-		'ClientSecret' => env('PAYPAL_CLIENT_SECRET', 'EJYbxfgbMlNB4wOVtQWXkq2OeAet_k6UX3AeooMJ29Rd60-6_yWgS_JGfxkTarIB49AxarCJJcUi8_ms'),
+		'ClientId' => env('AU7Ps_3RHBXvyJyAMChPwOfngLrQkvez6m7749PwkcfAGR1zj4siO5gje_rTNcIm-iDFSqcMYInxo6g5'),
+		'ClientSecret' => env('EBB9kLpcuBhcfjseOkBUo-P2hf6Zov02N_Zxy1PmJ9bJbhcorNa3IBMsWDCYnG2Pto37RlDRZ_a5bPj-'),
 	),
 
 	# Connection Information
@@ -38,3 +38,4 @@ return array(
 		//'LogLevel' => 'FINE',
 	),
 );
+

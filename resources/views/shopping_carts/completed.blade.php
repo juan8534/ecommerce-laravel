@@ -33,6 +33,11 @@
         <div class="col-xs-6">{{ "$order->state $order->country_code" }}</div>
       </div>
 
+      <div class="row large-padding">
+        <div class="col-xs-6">Producto</div>
+        <div class="col-xs-6">{{ "" }}</div>
+      </div>
+
       <div class="text-center top-space">
         <a href="{{ url('/compras/'.$shopping_cart->customid)}}">Link permanente de tu compra</a>
       </div>

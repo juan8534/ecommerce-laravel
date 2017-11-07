@@ -8,8 +8,8 @@ class Paypal
 {
       private $_apiContext;
       private $shopping_cart;
-      private $_ClientId = 'AbC0uKh6dCcwE4gcumASz2hDDNcbAxR84gmlhWpGr4GgCMgNqkX4lRgdjTcdGK42xetf80KJkmvD6vGi';
-      private $_ClientSecret = 'EJYbxfgbMlNB4wOVtQWXkq2OeAet_k6UX3AeooMJ29Rd60-6_yWgS_JGfxkTarIB49AxarCJJcUi8_ms';
+      private $_ClientId = 'AU7Ps_3RHBXvyJyAMChPwOfngLrQkvez6m7749PwkcfAGR1zj4siO5gje_rTNcIm-iDFSqcMYInxo6g5';
+      private $_ClientSecret = 'EBB9kLpcuBhcfjseOkBUo-P2hf6Zov02N_Zxy1PmJ9bJbhcorNa3IBMsWDCYnG2Pto37RlDRZ_a5bPj-';
 
       public function __construct($shopping_cart)
       {

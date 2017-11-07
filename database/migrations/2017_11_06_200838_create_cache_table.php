@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class TypeUsers extends Migration
+class CreateCacheTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,11 @@ class TypeUsers extends Migration
      */
     public function up()
     {
-        Schema::table('users', function($table){
-            $table->enum('type', ['member', 'admin'])->default('member');
+        Schema::create('cache', function (Blueprint $table) {
+            $table->string('key')->unique();
+            $table->text('value');
+            $table->integer('expiration');
         });
-        
     }
 
     /**
@@ -26,6 +27,6 @@ class TypeUsers extends Migration
      */
     public function down()
     {
-        
+        Schema::dropIfExists('cache');
     }
 }

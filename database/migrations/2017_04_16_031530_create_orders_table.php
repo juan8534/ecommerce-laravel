@@ -18,7 +18,7 @@ class CreateOrdersTable extends Migration
           $table->integer('shopping_cart_id')->unsigned();
           $table->foreign('shopping_cart_id')->references('id')->on('shopping_carts');
           $table->string('line1');  // De esta forma envia la informacion paypal
-          $table->string('line2');
+          $table->string('line2')->nullable();
           $table->string('city');
           $table->string('postal_code');
           $table->string('country_code');
@@ -27,7 +27,7 @@ class CreateOrdersTable extends Migration
           $table->string('email');
           $table->string('status')->default('creado');
           $table->string('guide_number')->nullable();
-          $table->integer('total');
+          $table->decimal('total',9,2);
 
           $table->timestamps();
         });

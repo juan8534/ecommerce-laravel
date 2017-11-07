@@ -17,6 +17,15 @@ class TypeUsersAdmin extends Migration
         Schema::table('users', function($table){
             $table->enum('type', ['member', 'admin'])->default('member');
         });
+
+        DB::table('users')->insert(
+            array(
+                'name' => 'administrador',
+                'email' => 'admin@admin.com',
+                'password' => bcrypt('admin'),
+                'type' => 'admin'                
+            )
+        );
     }
 
     /**

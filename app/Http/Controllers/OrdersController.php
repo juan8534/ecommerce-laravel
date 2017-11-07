@@ -6,10 +6,14 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Order;
+use App\Product;
+use App\ShoppingCart;
+
 
 class OrdersController extends Controller
 {
 
+    
     public function __construct(){
         $this->middleware("auth");
     }
@@ -21,7 +25,8 @@ class OrdersController extends Controller
     public function index()
     {
         $orders = Order::latest()->get();
-
+        /* $ordenes = Order::with('shopping_cart','products')->get();
+        dd($ordenes); */
         $totalMonth = Order::totalMonth();
         $totalMonthCount = Order::totalMonthCount();
         $totalSales = Order::totalSales();

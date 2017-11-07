@@ -16,7 +16,9 @@ Route::get('/', 'MainController@home'); //Ruta generada para la vista principal
 Route::get('/carrito', 'ShoppingCartsController@index');
 Route::post('/carrito', 'ShoppingCartsController@checkout');
 Auth::routes();
-Route::get('products/{id}', 'ProductsController@show');
+Route::get('products/{id}', 'ProductsController@show'); 
+
+/* Route::get('products/{id}', 'ProductsController@show'); */
 Route::resource('compras', 'ShoppingCartsController',[
       'only' => ['show'] //Ruta para mostar el link con la informacion del cliente
 ]);
@@ -55,6 +57,7 @@ Route::post('orders/update/{id}', ['as' => 'orders/update', 'uses' => 'OrdersCon
 
 });      
 Route::get('/home', 'HomeController@index');
+
 
 Route::get('products/images/{filename}', function($filename){
       $path = storage_path("app/images/$filename");
