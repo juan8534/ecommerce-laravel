@@ -12,8 +12,8 @@
 
     <!-- Styles -->
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/icon?family=Material+Icons ">
-    <link type="text/css" rel="stylesheet" href="../plugins/css/materialize.min.css"  media="screen,projection"/>
-    <link type="text/css" rel="stylesheet" href="../css/app.css"  media="screen,projection"/>    
+    <link type="text/css" rel="stylesheet" href="/ecommerce/public/plugins/css/materialize.min.css"  media="screen,projection"/>
+    <link type="text/css" rel="stylesheet" href="/ecommerce/public//css/app.css"  media="screen,projection"/>    
     <link rel="stylesheet" href="../plugins/css/sweetalert.css">
     <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -134,9 +134,9 @@
     </div>
 
     <!-- Scripts -->
-    <script type="text/javascript" src="../plugins/jquery/jquery-3.2.1.min.js"></script>       
-    <script type="text/javascript" src="../plugins/js/materialize.js"></script> 
-    <script src="../plugins/js/sweetalert.min.js"></script>
+    <script type="text/javascript" src="/ecommerce/public/plugins/jquery/jquery-3.2.1.min.js"></script>       
+    <script type="text/javascript" src="/ecommerce/public/plugins/js/materialize.js"></script> 
+    <script src="/ecommerce/public/plugins/js/sweetalert.min.js"></script>
     <script type="text/javascript" src="/ecommerce/resources/assets/js/app.js"></script>
     @include('sweet::alert')
 </body>
