@@ -2,10 +2,10 @@
 
 @section('title', 'Productos Facilito')
 
-@section('content')
-  <div class="col s12 m6 center">
-    <h3>Bienvenidos a compumundohipermegared</h3>
-  </div>
+@section('content')  
+<div class="background">
+  <img src="images/online.jpg" height="360" width="1350">
+</div>  
   <div class="row">
     @foreach($products as $product)
       <div class="col s12 m6">

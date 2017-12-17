@@ -24,7 +24,7 @@ class ProductsController extends Controller
     public function index()
     {
         //Se crea una variable products para tener los datos del modelo Product con el metodo all()
-        $products = Product::all();
+        $products = Product::orderBy('id', 'ASC')->paginate(10);
         return view("products.index",['products' => $products ]); //Se lleva la variable 'products' al modelo
     }
 

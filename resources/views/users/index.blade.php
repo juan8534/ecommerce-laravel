@@ -45,8 +45,11 @@
             </td>                        
           </tr>          
         @endforeach  
-      </tbody>
+      </tbody>      
     </table>
+    <div class="center-align">
+          {{ $users->links() }}
+      </div>
     <div class="right-align">
       <a href="{{ route('users.create')}}" class="waves-effect waves-light btn">
         Nuevo Usuario

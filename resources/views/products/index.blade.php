@@ -52,6 +52,9 @@
         @endforeach
       </tbody>
     </table>
+    <div class="center-align">
+          {{ $products->links() }}
+      </div>
     <div class="right-align">
       <a href="{{url('/products/create')}}" class="waves-effect waves-light btn">
         Nuevo Producto
