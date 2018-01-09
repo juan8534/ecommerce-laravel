@@ -39,5 +39,10 @@ class User extends Authenticatable
         return $this->belongsTo(Profile::class, 'id_profile');
     }
 
+    public function products()
+    {
+        return $this->hasMany('App\Product');
+    }
+
 
 }

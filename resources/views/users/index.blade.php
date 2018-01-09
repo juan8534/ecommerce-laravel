@@ -17,7 +17,7 @@
   </section>
   <!--BreadCrumbs/-->
   <div class="container">
-      <h4 id="table-user">Lista de usuarios</h4>
+    <h4 id="table-user">Lista de usuarios</h4>
     <table class="table table-responsive">
       <thead>
         <tr>

@@ -12,11 +12,11 @@
 
         <!-- Styles -->
         <link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet">
-        <link type="text/css" rel="stylesheet" href="/ecommerce/public/plugins/css/bootstrap.min.css"  media="screen,projection"/>
-        <link type="text/css" rel="stylesheet" href="/ecommerce/public/css/app.css"  media="screen,projection"/>    
-        <link rel="stylesheet" href="/ecommerce/public/plugins/css/sweetalert.css">
+        <link type="text/css" rel="stylesheet" href="{{ asset('plugins/css/bootstrap.min.css') }}"  media="screen,projection"/>
+        <link type="text/css" rel="stylesheet" href="{{ asset('css/app.css') }}"  media="screen,projection"/>    
+        <link rel="stylesheet" href="{{ asset('plugins/css/sweetalert.css') }}">
         <link rel="stylesheet" href="{{ asset('plugins/fileinput/css/fileinput.css')}}">
-        <link rel="stylesheet" href="/ecommerce/public/plugins/font-awesome/css/font-awesome.min.css">
+        <link rel="stylesheet" href="{{ asset('plugins/font-awesome/css/font-awesome.min.css') }}">
         <!--Let browser know website is optimized for mobile-->
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <link href="{{ url('/css/app.css') }}" rel="stylesheet">
@@ -164,12 +164,12 @@
         <!-- Footer-->
 
         <!-- Scripts -->
-        <script type="text/javascript" src="/ecommerce/public/plugins/jquery/jquery-3.2.1.min.js"></script>       
-        <script type="text/javascript" src="/ecommerce/public/plugins/js/tether.min.js"></script> 
-        <script type="text/javascript" src="/ecommerce/public/plugins/js/bootstrap.min.js"></script> 
+        <script type="text/javascript" src="{{ asset('plugins/jquery/jquery-3.2.1.min.js')}}"></script>       
+        <script type="text/javascript" src="{{ asset('plugins/js/tether.min.js') }}"></script> 
+        <script type="text/javascript" src="{{ asset('plugins/js/bootstrap.min.js')}}"></script> 
         <script src="{{ asset('plugins/fileinput/js/fileinput.js')}}"></script>
-        <script src="/ecommerce/public/plugins/js/sweetalert.min.js"></script>
-        <script type="text/javascript" src="/ecommerce/public/plugins/js/app.js"></script>
+        <script src="{{ asset('plugins/js/sweetalert.min.js')}}"></script>
+        <script type="text/javascript" src="{{ asset('plugins/js/app.js')}}"></script>
         <!-- Scripts /-->
         @include('sweet::alert')
         @yield('js')

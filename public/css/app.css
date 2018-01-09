@@ -185,7 +185,7 @@ input.form-control:focus {
 }
 
 #crarUsuario{
-  margin-bottom: 1em;
+  margin-bottom: 2em;
 }
 /*-----Create Users----------*/
 
@@ -229,3 +229,7 @@ input.form-control:focus {
 .categories-container-create{
   margin-bottom: 2em;
 }
+
+/* #btn-product{
+  margin-right: 2em;
+} */
