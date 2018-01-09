@@ -1,43 +1,3 @@
-$(document).ready(function(){
-    $(".dropdown-button").dropdown();
-});
-
-$(document).ready(function() {
-    Materialize.updateTextFields();
-  });
-
-$(document).ready(function() {
-  $('select').material_select();
-});
-
-$(document).ready(function(){
-// the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
-  $('.modal').modal();
-});
-
-//Carga el slide nav
-$(".button-collapse").sideNav();
-$('.button-collapse').sideNav({
-      menuWidth: 300, // Default is 240
-      closeOnClick: true // Closes side-nav on <a> clicks, useful for Angular/Meteor
-    }
-  );
-$('.collapsible').collapsible();
-
-// SIDEBAR
-$(document).ready(function(){
-  $('.button-collapse').sideNav({
-      menuWidth: 300, // Default is 300
-      edge: 'left', // Choose the horizontal origin
-      closeOnClick: false, // Closes side-nav on <a> clicks, useful for Angular/Meteor
-      draggable: true // Choose whether you can drag to open on touch screens
-    }
-  );
-  // START OPEN
-  $('.button-collapse').sideNav('show');
-});
-
-
 /*Carga el modal de eliminar usuario*/    
 $('button.delete-user').on('click', function(e){
   e.preventDefault();
@@ -93,6 +53,35 @@ $('button.delete-product').on('click', function(e){
               swal("cancelado","El producto esta a salvo", "error");
         }
     });
+  }); 
+
+
+/*Carga el modal de eliminar categorias*/    
+$('button.delete-category').on('click', function(e){
+    e.preventDefault();
+    var self = $(this);
+    swal({
+        title             : "Estas seguro?",
+        text              : "Se eliminara la categoria de forma permante!",
+        type              : "warning",
+        showCancelButton  : true,
+        confirmButtonColor: "#DD6B55",
+        confirmButtonText : "Si, eliminalo!",
+        cancelButtonText  : "No, cancela!",
+        closeOnConfirm    : false,
+        closeOnCancel     : false
+    },
+    function(isConfirm){
+        if(isConfirm){
+       //     swal("Eliminado!","Se elimino el usuario de manera exitosa", "success");
+            setTimeout(function() {
+                self.parents(".delete_category").submit();
+            }, 1000); //2 second delay (2000 milliseconds = 2 seconds)
+        }
+        else{
+              swal("cancelado","La categoria esta a salvo", "error");
+        }
+    });
   });
 
   /*Ajax para añadir producto al carrito*/
@@ -137,4 +126,18 @@ $('button.delete-product').on('click', function(e){
     }
   });
 
+const $filtrosToggle = $('#filtrosToggle')
+$filtrosToggle.click(function (ev){
+    ev.preventDefault()
+
+    const $i = $filtrosToggle.find('i.fa')
+    const isDown = $i.hasClass('fa-chevron-down')
+    if(isDown){
+        $i.removeClass('fa-chevron-down').addClass('fa-chevron-up')
+    }
+    else{
+        $i.removeClass('fa-chevron-up').addClass('fa-chevron-down')
+    }
+})
+  
   

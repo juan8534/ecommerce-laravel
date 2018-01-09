@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use App\User;
+use App\Profile;
 use Alert;
 
 
@@ -18,9 +20,12 @@ class UsersController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $users = User::orderBy('id', 'ASC')->paginate(10);            
+        $users = User::orderBy('id', 'ASC')->paginate(10);     
+        $users->each(function($users){
+            $users->profiles;
+        });
         return view('users.index')->with('users', $users);
         
     }
@@ -32,8 +37,8 @@ class UsersController extends Controller
      */
     public function create()
     {
-        return view('users.create');
-                
+        $profile = Profile::orderby('description','ASC')->pluck('description','id');
+        return view('users.create')->with('profile', $profile);
     }
 
     /**
@@ -45,7 +50,7 @@ class UsersController extends Controller
     public function store(Request $request)
     {
         $user = new User($request->all());
-        $user->password = bcrypt($request->password);   
+        $user->password = bcrypt($request->password);  
         $user->save();
         Alert::success('Usuario creado correctamente!!!');
         return redirect()->route('users.index');
@@ -72,7 +77,11 @@ class UsersController extends Controller
     public function edit($id)
     {
         $user = User::find($id);
-        return view('users.edit')->with('user', $user);
+        $user->profiles;
+        $profiles = Profile::orderBy('description','DESC')->pluck('description','id');
+        return view('users.edit')
+        ->with('user', $user)
+        ->with('profiles', $profiles);
     }
 
     /**

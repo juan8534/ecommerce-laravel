@@ -26,7 +26,7 @@ class Admin
     {   
         
        //dd(Auth::check() && Auth::check());
-    if(Auth::check() && Auth::user()->type == "admin")
+    if(Auth::check() && Auth::user()->id_profile == "1")
         {
         return $next($request);
         }                    

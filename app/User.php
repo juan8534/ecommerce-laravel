@@ -17,7 +17,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','type',
+        'name', 'email', 'password','id_profile',
     ];
 
     /**
@@ -29,9 +29,15 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function admin()
+    /* public function admin()
     {
       return $this->type === 'admin';
+    } */
+
+    public function profiles()
+    {
+        return $this->belongsTo(Profile::class, 'id_profile');
     }
+
 
 }

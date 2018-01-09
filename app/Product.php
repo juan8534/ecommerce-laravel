@@ -6,6 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {   
+    protected $table = "products";
+
+    protected $fillable = ['title','description','pricing','category_id'];
+
     public function scopeLatest($query){
         return $query->orderBy('id','desc');
     }
@@ -17,5 +21,15 @@ class Product extends Model
                                    ->setCurrency('USD')
                                    ->setQuantity(1)
                                    ->setPrice($this->pricing);
+    }
+
+    public function images()
+    {
+        return $this->hasMany('App\Image');
+    }
+
+    public function category()
+    {
+        return $this->belongsTo('App\Category');
     }
 }

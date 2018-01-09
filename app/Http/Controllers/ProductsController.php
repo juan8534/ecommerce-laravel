@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Product;
+use App\Image;
+use App\Category;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\QueryException;
 use Alert;
@@ -25,6 +27,9 @@ class ProductsController extends Controller
     {
         //Se crea una variable products para tener los datos del modelo Product con el metodo all()
         $products = Product::orderBy('id', 'ASC')->paginate(10);
+        $products->each(function($products){
+          $products->image;
+        });
         return view("products.index",['products' => $products ]); //Se lleva la variable 'products' al modelo
     }
 
@@ -36,7 +41,11 @@ class ProductsController extends Controller
     public function create()
     {
       $product = new Product;
-      return view("products.create",['product' => $product]); //Pasamos la variable a la vista create product
+      $category = Category::orderby('name','ASC')->pluck('name','id');
+      
+      return view('products.create')
+      ->with('product', $product)
+      ->with('category', $category);
     }
 
     /**
@@ -47,30 +56,25 @@ class ProductsController extends Controller
      */
     public function store(Request $request)
     {
-        //Verificamos si se sube el archivo valido
-        $hasFile = $request->hasFile('cover') && $request->cover->isValid();
-        //Metodo creado para guardar el producto
-        $product = new Product;
-
-        $product->title = $request->title;
-        $product->description = $request->description;
-        $product->pricing = $request->pricing;
-        $product->user_id = Auth::user()->id; //Se le asigna el producto al usuario que tiene sesion abierta
-
-        if ($hasFile) {
-            $extension = $request->cover->extension();
-            $product->extension = $extension;
-        }
-
-        if($product->save()){
-          if ($hasFile) {
-            $request->cover->storeAs('images', "$product->id.$extension");
-          }
-          Alert::success('Producto creado correctamente!!!');          
-          return redirect("/products");
-        }else {
-          return redirect("/products/create");
-        }
+      
+      $file = $request->file('image');
+        
+      $name = 'product_' . time() . '.' .$file->getClientOriginalExtension();
+      $path = public_path() . '/images/products_images';
+      $file->move($path, $name);
+      
+      //metod para tomar el user_id de la tabla usuarios
+      $product = new Product($request->all());
+      $product->user_id = \Auth::user()->id;
+      $product->save();
+      //dd($product);
+      //metodo para llenar la tabla imagenes
+      $image = new Image();
+      $image->name = $name;
+      $image->product()->associate($product);
+      $image->save();
+      Alert::success('Producto Creado correctamente!!!');          
+      return redirect("/products");
     }
 
     /**

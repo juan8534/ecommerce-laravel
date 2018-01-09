@@ -1,47 +1,69 @@
-  @extends('layouts.app')
+@extends('layouts.app')
 
 @section('title', 'Productos Facilito')
 
 @section('content')  
-<div class="background">
-  <img src="images/online.jpg" height="360" width="1350">
-</div>  
-  <div class="row">
-    @foreach($products as $product)
-      <div class="col s12 m6">
-        <div class="card">
-          <div class="row">
-            <div class="col s12 m6">
-              <div class="waves-effect waves-block waves-light">
-                <img class="activator product-avatar" src="{{url("/products/images/$product->id.$product->extension")}}">
-              </div>
+        <!--Carousel-->
+        <div id="carousel-container">
+            <div id="productosCarousel" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    <li data-target="#productosCarousel" data-slide-to="0" class="active"></li>
+                    <li data-target="#productosCarousel" data-slide-to="1"></li>
+                    <li data-target="#productosCarousel" data-slide-to="2"></li>
+                </ol>
+                <div class="carousel-inner" role="listbox">
+                    <div class="carousel-item active">
+                        <img class="d-block img-fluid" src="./images/primero.svg" alt="Primer producto">
+                        <div class="carousel-caption">
+                            <h3>Primer producto</h3>
+                            <p class="hidden-sm-down">Descripcion del primer producto</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img class="d-block img-fluid" src="./images/primero.svg" alt="Segundo producto">
+                        <div class="carousel-caption">
+                            <h3>Segundo producto</h3>
+                            <p class="hidden-sm-down">Descripcion del segundo producto</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img class="d-block img-fluid" src="./images/primero.svg" alt="Tercer productos">
+                        <div class="carousel-caption">
+                            <h3>Tercer producto</h3>
+                            <p class="hidden-sm-down">Descripcion del tercer producto</p>
+                        </div>
+                    </div>
+                </div>
+                    <a class="carousel-control-prev" href="#productosCarousel" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Anterior</span>
+                    </a>
+                    <a class="carousel-control-next" href="#productosCarousel" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Siguiente</span>
+                    </a>
             </div>
-            <div class="s12 m6">
-              <h4>Precio: {{ $product->pricing}} </h4>               
-                {!! Form::open(['url' => '/in_shopping_carts', 'method' => 'POST', "class" => "add-to-cart inline-block"]) !!}
-                  <input type="hidden" name="product_id" value="{{ $product->id }}">
-                  <button class="btn waves-effect waves-light" type="submit" name="action">
-                    Añadir al carrito                
-                  </button>
-                {!! Form::close([]) !!}
-                <br>            
-                <a href="{{ url("/products/$product->id")}}" class="btn blue">
-                  Ver producto
-                </a>
-            </div>
-          </div>
-          <div class="card-content">
-            <span class="card-title activator grey-text text-darken-4">{{ $product->title}}<i class="material-icons right">more_vert</i></span>             
-          </div>
-          <div class="card-reveal">
-            <span class="card-title grey-text text-darken-4">{{ $product->title}}<i class="material-icons right">close</i></span>
-            <p>{{ $product->description }}</p>
-          </div>
         </div>
-      </div>
-   @endforeach  
-  </div>
-  <div class="center-align">
-    {{ $products->links() }}
-  </div>
+        <!--Carousel/-->
+
+        <!-- Información-->
+        <div id="info-container">
+            <div class="container">
+                <div class="row text-center">
+                    <div class="col-12 col-md-4">
+                        <img src="images/calidad.png" alt="Calidad" class="img-fluid">
+                        <h4>Productos garantizados</h4>
+                    </div>
+                    <div class="col-12 col-md-4">
+                        <img src="images/envio.png" alt="Calidad" class="img-fluid">
+                        <h4>Envios a nivel nacional</h4>
+                    </div>
+                    <div class="col-12 col-md-4">
+                            <img src="images/paypal.png" alt="Calidad" class="img-fluid">
+                        <h4>Pagos por paypal</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Información-->
 @endsection

@@ -1,174 +1,231 @@
-.navigator {
-  margin-bottom: 10px;
+body{
+  font-family: 'Noto Sans', sans-serif;
 }
 
-.blue-grey {
-  background-color: #37474f;
+#header-container{
+  background-color: #5d9105;
+  color: white;
+  font-style: medium;
 }
 
-.white-text {
+#login{
   color: white;
 }
 
-.table {
-  background-color: white;
+
+#header-container .navbar-toggler{
+  color: white;
 }
 
-.product {
-  width: 800px;
-  max-height: 100%;
-  padding: 1em;
-  
+.nav-link {
+	color: #D5D5D7;
 }
 
-.product h3 {
-  padding-bottom: 10px;
-  border-bottom: solid 1px;
+.nav-link:hover {
+	color: #464a4c;
 }
 
-.product .actions {
-  right: 1em;
-  top: 1px;
+#menu-container {
+  background-color: #f7f7f9;
 }
 
-.large-padding {
-  padding: 10px 15px;
+.btn.btn-compumundo{
+  background-color: #5d9105;
+  color: white;
 }
 
-.big-padding {
-  padding: 10px;
-  margin-top: 0px;
+.btn.btn-compumundo:hover{
+  background-color: #406403;
 }
 
-.top-space {
+input.form-control:focus {
+  border-color: #406403;
+}
+
+#productosCarousel{
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+26,000000+47,000000+58,000000+58,000000+65,000000+65,000000+67,000000+71&0+47,0.65+100 */
+  background: -moz-radial-gradient(center, ellipse cover, rgba(0,0,0,0) 26%, rgba(0,0,0,0) 47%, rgba(0,0,0,0.13) 58%, rgba(0,0,0,0.22) 65%, rgba(0,0,0,0.24) 67%, rgba(0,0,0,0.29) 71%, rgba(0,0,0,0.65) 100%); /* FF3.6-15 */
+  background: -webkit-radial-gradient(center, ellipse cover, rgba(0,0,0,0) 26%,rgba(0,0,0,0) 47%,rgba(0,0,0,0.13) 58%,rgba(0,0,0,0.22) 65%,rgba(0,0,0,0.24) 67%,rgba(0,0,0,0.29) 71%,rgba(0,0,0,0.65) 100%); /* Chrome10-25,Safari5.1-6 */
+  background: radial-gradient(ellipse at center, rgba(0,0,0,0) 26%,rgba(0,0,0,0) 47%,rgba(0,0,0,0.13) 58%,rgba(0,0,0,0.22) 65%,rgba(0,0,0,0.24) 67%,rgba(0,0,0,0.29) 71%,rgba(0,0,0,0.65) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#a6000000',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+}
+
+#productosCarousel img{
+  margin: 0 auto;
+}
+#info-container{
+  background-color: #5d9105;
+  color: white;
+  font-style: medium;
+}
+
+#info-container h4 {
+  margin: 1em 0; 
+}
+
+#info-container img {
+  margin: 0 auto;
+  margin-top: 2em;
+}
+
+#footer-container{
+  background-color: #1c3643;
+  color: white;
+  padding: 3em 0;
+}
+
+#footer-container h4 {
+  font-size: 16px;
+}
+
+#footer-container nav-link {
+  color: white;
+}
+
+@media (max-width: 768px){
+  #footer-container [class*="col-"]{
+    margin-bottom: 2em;
+  }
+}
+
+#breadcrumbs-container .breadcrumb {
+  padding-left: 1;
+}
+
+#breadcrumbs-container .breadcrumb .breadcrumb-item{
+  color: #1c3643;
+}
+
+#breadcrumbs-container .breadcrumb .breadcrumb-item .active{
+  color: #95a5a6;
+}
+
+#breadcrumbs-container .breadcrumb .breadcrumb-item+.breadcrumb-item::before {
+  content: ">";
+}
+
+#filtros-container .list-group-item-action.active {
+  background-color: #5d9105;
+  border-color: #5d9105;
+}
+
+#filtros-container .list-group {
+  margin-bottom: 1em;
+}
+
+#productos-container {
+  margin-bottom: 2em;
+}
+
+
+/*Dispositivos muy pequeños*/
+@media (max-width: 768px){
+  .listado-productos {
+    margin-top: 1em;
+  }
+
+  .listado-productos .card-img-top {
+    width: 100%;
+  }
+}
+
+.listado-productos{
+  margin-top: 0.5em;
+}
+
+/*-----Login----------*/
+
+.login-container{
+  margin-top: 2em;
+  margin-bottom: 13em;
+  font-family: 'Noto Sans', sans-serif;
+}
+
+#loginForm{
+  margin-top: 2em;
+}
+
+@media (max-width: 768px){
+  #login-front {
+    text-align: center;
+  }
+  .login-container{
+    margin-bottom: 2em;
+  }
+}
+
+/*-----Login----------*/
+
+#icon-car{
+  font-size: 1.6em;
+  margin-top: 0.2em;
+}
+
+/*-----Create Users----------*/
+
+.user-container-create{
+  font-family: 'Noto Sans', sans-serif;
+  margin-top: 2em;
+  margin-bottom: 2em;
+}
+
+#formUsers{
+  margin-top: 2em;
+}
+
+.input-user{
+  border-color: #808080;
   margin-top: 1em;
+  margin-bottom: 1em;
 }
 
-.absolute {
-  position: absolute;
-}
-
-.sale-data {
-  padding: 1em;
-  text-align: center;
-  border-right: solid 1px #222;
-}
-
-.sale-data span {
-  display: block;
-  font-size: 2.2em;
-  color: #3f51b5;
-}
-
-.product-avatar {
-  width: 350px;
-  height: 200px;
-}
-
-.products-container .product {
+#table-user{
   margin-top: 1em;
+  margin-bottom: 1em;
 }
 
-.creado {
-  background-color: #d4e157;
+#crarUsuario{
+  margin-bottom: 1em;
 }
-.td-left{
-  padding-left:40px
+/*-----Create Users----------*/
+
+
+/*-----Pagination----------*/
+
+.pagination {
+  display: inline-flex;
 }
 
-.td-right{
-  padding-bottom: 1em;
+.pagination a {
+  color: black;
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+}
+.pagination .active {
+  background-color: #5d9105;
+  color: white;
+  padding: 8px 16px;
+  text-decoration: none;
 }
 
-.circle-shopping-cart{
-  background-color: rgb(3, 48, 31);
-  border-radius: 50%;
-  padding: 0.5em 1em;
+.pagination .disabled span{
+  padding: 8px 16px;
 }
+/*-----Pagination----------*/
 
-.highlight{
-  -webkit-animation: highlight 1.5s;
-  animation: highlight 1.5s;
-}
-
-@-webkit-keyframes highlight{
-  50% {
-    background-color: #ffff00;
-    color: black;
-  }
-  100%{
-    background-color: inherit;
-  }
-}
-
-@keyframes highlight {
-  50%{
-    background-color: #ffff00;
-    color: black;
-  }
-  100%{
-    backface-color: inherit;
-  }
+/*-----CreateProduct----------*/
+#productCreate{
+  margin-bottom: 1em;
+  margin-top: 0.5em;
 }
 
 
-
-header, main, footer {
-  padding-left: 300px;
+#categoryCreate{
+  margin-bottom: 1em;
+  margin-top: 0.5em;
 }
 
-@media only screen and (max-width : 992px) {
-  header, main, footer {
-    padding-left: 0;
-  }
+.categories-container-create{
+  margin-bottom: 2em;
 }
-
-.wrapper {
-  padding-left: 300px;
-/*# sourceMappingURL=app.css.map */
-}
-
-/*Estilos nav bar*/
-
- 
-.side-nav li>a {
-  padding: 0 16px;
-}
-
-.side-nav .divider {
-  margin:0;
-  height:8px;
-  border-bottom:1px solid #e0e0e0;
-  background-color: transparent;
-}
-
-
-.sidenav-header {
-background: url("../images/user-bg.jpg") no-repeat center center;
-background-size: cover;
-margin-bottom: 0px;
-padding: 15px 0 0 15px;
-  .row {
-    margin-bottom: 0;
-  }
-}
-.sidenav-footer {
-margin-bottom: 0px;
-padding: 0;
-  .row {
-    margin-bottom: 0;
-    .social-icons {
-      a {
-        opacity: 0.5;
-        padding: 0;
-        text-align:center;
-        &:hover {
-          background-color:inherit;
-          opacity: 1;
-        }
-      }
-    }
-  }
-}
-
-

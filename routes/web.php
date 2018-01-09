@@ -15,6 +15,7 @@ Route::get('/', 'MainController@home'); //Ruta generada para la vista principal
 
 Route::get('/carrito', 'ShoppingCartsController@index');
 Route::post('/carrito', 'ShoppingCartsController@checkout');
+Route::get('/catalogs','CatalogsController@index');
 Auth::routes();
 /* Route::get('products/{id}', 'ProductsController@show');  */
 
@@ -46,8 +47,11 @@ Route::delete('users/{id}/destroy',[
 ]);
 
 
-
-
+Route::resource('categories', 'CategoriesController');
+Route::delete('categories/{id}/destroy',[
+      'uses' => 'CategoriesController@destroy',
+      'as'   => 'categories.destroy'
+]);
 
 Route::resource('orders', 'OrdersController', [
       'only' => ['index']
@@ -59,7 +63,7 @@ Route::post('orders/update/{id}', ['as' => 'orders/update', 'uses' => 'OrdersCon
 Route::get('/home', 'HomeController@index');
 
 
-Route::get('products/images/{filename}', function($filename){
+/* Route::get('products/images/{filename}', function($filename){
       $path = storage_path("app/images/$filename");
 
       if (!\File::exists($path)) abort(404);
@@ -73,4 +77,4 @@ Route::get('products/images/{filename}', function($filename){
       $response->header("Content-Type", $type);
 
       return $response;
-});
+}); */
