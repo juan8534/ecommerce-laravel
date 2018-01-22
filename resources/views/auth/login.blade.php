@@ -7,16 +7,28 @@
             <div class="login-container">
                 <h4 id="login-front">Login</h4>
                 <form id="loginForm" action="{{ url('/login') }}" method="post">
-                    {{ csrf_field() }}
+                    {!! csrf_field() !!}
                     <h5>Correo electrónico</h5>
                     <div class="form-group">
                         <input type="email" class="form-control" id="email" name="email"
-                        placeholder="tu@correo.com" required>
+                        placeholder="tu@correo.com" value="{{ old('email') }}" required autofocus required>
+                        @if ($errors->has('email'))
+                        <span class="help-block">
+                            <strong>{{ $errors->first('email') }}</strong>
+                        </span>
+                    @endif
+
                     </div>
                     <h5>Contraseña</h5>
                     <div class="form-group">
                         <input type="password" class="form-control" id="password" name="password"
                         required>
+                        @if ($errors->has('password'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('password') }}</strong>
+                                    </span>
+                                @endif
+
                     </div>
                     <div class="row">
                         <div class="col-8 col-md-6">

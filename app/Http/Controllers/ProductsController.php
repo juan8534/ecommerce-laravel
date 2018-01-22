@@ -26,7 +26,7 @@ class ProductsController extends Controller
     public function index()
     {
         //Se crea una variable products para tener los datos del modelo Product con el metodo all()
-        $products = Product::orderBy('id', 'ASC')->paginate(10);
+        $products = Product::orderBy('id', 'ASC')->paginate(6);
         $products->each(function($products){
           $products->image;
         });
@@ -99,7 +99,11 @@ class ProductsController extends Controller
     public function edit($id)
     {
       $product = Product::find($id); //Buscamos el producto para editarlo      
-      return view("products.edit",['product' => $product]); //Lo pasamos a la vista
+      $product->category;
+      $category = Category::orderBy('name','DESC')->pluck('name','id');
+      return view("products.edit")
+      ->with('product',$product)
+      ->with('category', $category); //Lo pasamos a la vista
     }
 
     /**

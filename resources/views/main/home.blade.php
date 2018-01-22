@@ -10,29 +10,27 @@
                     <li data-target="#productosCarousel" data-slide-to="0" class="active"></li>
                     <li data-target="#productosCarousel" data-slide-to="1"></li>
                     <li data-target="#productosCarousel" data-slide-to="2"></li>
+                    <li data-target="#productosCarousel" data-slide-to="3"></li>
                 </ol>
                 <div class="carousel-inner" role="listbox">
                     <div class="carousel-item active">
-                        <img class="d-block img-fluid" src="./images/primero.svg" alt="Primer producto">
+                        <img class="d-block" src="./images/products.jpg" alt="Primer producto" width="800px" height="400px">
                         <div class="carousel-caption">
-                            <h3>Primer producto</h3>
-                            <p class="hidden-sm-down">Descripcion del primer producto</p>
+                            <h4>Bienvendo</h4>
+                            <p class="hidden-sm-down">A nuestra tienda!</p>
                         </div>
                     </div>
+                    @foreach ($products as $product)
                     <div class="carousel-item">
-                        <img class="d-block img-fluid" src="./images/primero.svg" alt="Segundo producto">
-                        <div class="carousel-caption">
-                            <h3>Segundo producto</h3>
-                            <p class="hidden-sm-down">Descripcion del segundo producto</p>
+                        @foreach ($product->images as $image)
+                            <img class="d-block" src="{{ asset('images/products_images/'.$image->name )}}" alt="Segundo producto" width="800px" height="400px">
+                        @endforeach
+                            <div class="carousel-caption">
+                                <h4>{{ $product->title }}</h4>
+                                <p class="hidden-sm-down">{{ $product->description }}</p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="carousel-item">
-                        <img class="d-block img-fluid" src="./images/primero.svg" alt="Tercer productos">
-                        <div class="carousel-caption">
-                            <h3>Tercer producto</h3>
-                            <p class="hidden-sm-down">Descripcion del tercer producto</p>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
                     <a class="carousel-control-prev" href="#productosCarousel" role="button" data-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>

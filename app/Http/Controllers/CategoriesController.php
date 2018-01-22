@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Category;
+use App\Product;
 use Alert;
 use Illuminate\Database\QueryException;
 
@@ -14,9 +15,9 @@ class CategoriesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $categories = Category::orderBy('id', 'ASC')->paginate(10); 
+        $categories = Category::search($request->title)->orderBy('id', 'ASC')->paginate(10); 
         return view('categories.index')->with('categories', $categories);
     }
 

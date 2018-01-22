@@ -10,7 +10,7 @@ use Auth;
 class Order extends Model
 {
     protected $fillable = ['recipient_name', 'line1', 'line2', 'city', 'country_code', 'state', 'postal_code',
-                            'email', 'shopping_cart_id', 'status', 'total', 'guide_number'];
+                            'email', 'shopping_cart_id', 'status', 'total', 'user_id','guide_number','estate_id'];
     
     public function sendMail(){
         if(Auth::check()){
@@ -28,12 +28,14 @@ class Order extends Model
     public static function createFromPayPalResponse($response, $shopping_cart)
     {
       $payer = $response->payer;
+      $user = Auth::user()->id;
 
       $orderData = (array) $payer->payer_info->shipping_address;
       $orderData = $orderData[key($orderData)];
 
       $orderData["email"] = $payer->payer_info->email;
       $orderData["total"] = $shopping_cart->total();
+      $orderData["user_id"] = $user;
       $orderData["shopping_cart_id"] = $shopping_cart->id;
 
       return Order::create($orderData);
@@ -60,6 +62,11 @@ class Order extends Model
 
     public function shopping_cart(){
         return $this->belongsTo('App\ShoppingCart');
+    }
+
+    public function states()
+    {
+        return $this->belongsTo('App\State','estate_id');
     }
 
     public static function  totalMonth(){

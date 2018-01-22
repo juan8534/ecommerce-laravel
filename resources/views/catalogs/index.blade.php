@@ -37,50 +37,11 @@
                             <a href="#" class="list-group-item list-group-item-action active">
                                 <h5 class="list-group-item-heading">Categorías</h5>
                             </a>
-                            <a href="" class="list-group-item list-group-item-action justify-content-between">
-                                Ropa <span class="badge badge-pill badge-default ">174</span>
+                            @foreach ($categories as $category)
+                            <a href="{{ route('search.category', $category->name) }}" class="list-group-item list-group-item-action justify-content-between">
+                                {{$category->name }} <span class="badge badge-pill badge-default ">{{ $category->products->count()}}</span>
                             </a>
-                            <a href="" class="list-group-item list-group-item-action justify-content-between">
-                                Tecnologia <span class="badge badge-pill badge-default ">174</span>
-                            </a>
-                            <a href="" class="list-group-item list-group-item-action justify-content-between">
-                                Accesorios <span class="badge badge-pill badge-default ">174</span>
-                            </a>
-                        </div>
-                        <div class="list-group">
-                            <a href="#" class="list-group-item list-group-item-action active">
-                                <h5 class="list-group-item-heading">Color</h5>
-                            </a>
-                            <a href="" class="list-group-item list-group-item-action justify-content-between list-group-item-success">
-                                Verde <span class="badge badge-pill badge-default ">174</span>
-                            </a>
-                            <a href="" class="list-group-item list-group-item-action justify-content-between list-group-item-danger">
-                                Rojo <span class="badge badge-pill badge-default ">174</span>
-                            </a>
-                            <a href="" class="list-group-item list-group-item-action justify-content-between list-group-item-warning">
-                                Amarrillo <span class="badge badge-pill badge-default ">174</span>
-                            </a>
-                        </div>
-                        <div class="list-group">
-                            <a href="#" class="list-group-item list-group-item-action active">
-                                <h5 class="list-group-item-heading">Genero</h5>
-                            </a>
-                            <a href="" class="list-group-item list-group-item-action justify-content-between">
-                                <div class="form-check">    
-                                    <label  class="form-check-label">
-                                        <input type="checkbox" value="m" class="form-check-input">
-                                        Masculino
-                                    </label>
-                                </div>
-                            </a>
-                            <a href="" class="list-group-item list-group-item-action justify-content-between">
-                                <div class="form-check">    
-                                    <label  class="form-check-label">
-                                        <input type="checkbox" value="m" class="form-check-input">
-                                        Femenino
-                                    </label>
-                                </div>
-                            </a>
+                            @endforeach
                         </div>
                     </div>
                 </div>
@@ -88,53 +49,30 @@
             <!-- Filtros/-->
 
             <!-- Productos2-->
+            
             <div class="col-12 col-md-9">
                 <div class="row">
-                    <div class="col-12 col-sm-6 col-md-4 listado-productos">
-                       <div class="card">
-                           <img src="images/producto.svg" alt="Producto 1" class="card-img-top img-fluid">
-                           <div class="card-block">
-                               <h4 class="card-title">Producto 1</h4>
-                               <p class="card-text">Producto en venta super revolucionario</p>
-                           </div>
-                       </div>
-                    </div>
+                    @foreach ($products as $product)
                     <div class="col-12 col-sm-6 col-md-4 listado-productos">
                         <div class="card">
-                            <img src="images/producto.svg" alt="Producto 1" class="card-img-top img-fluid">
+                            <a href="{{ route('catalogs.show', $product->id)}}">
+                                @foreach ($product->images as $image)
+                                    <img src="{{ asset('images/products_images/'.$image->name )}}" height="160" width="253" class="card-img-top">
+                                @endforeach
+                            </a>
                             <div class="card-block">
-                                <h4 class="card-title">Producto 1</h4>
-                                <p class="card-text">Producto en venta super revolucionario</p>
+                                <h4 class="card-title">{{ $product->title }}</h4>
+                                <p class="card-text">${{ $product->pricing}} dolares</p>
                             </div>
                         </div>
                     </div>
-                    <div class="col-12 col-sm-6 col-md-4 listado-productos">
-                        <div class="card">
-                            <img src="images/producto.svg" alt="Producto 1" class="card-img-top img-fluid">
-                            <div class="card-block">
-                                <h4 class="card-title">Producto 1</h4>
-                                <p class="card-text">Producto en venta super revolucionario</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12 col-sm-6 col-md-4 listado-productos">
-                        <div class="card">
-                            <img src="images/producto.svg" alt="Producto 1" class="card-img-top img-fluid">
-                            <div class="card-block">
-                                <h4 class="card-title">Producto 1</h4>
-                                <p class="card-text">Producto en venta super revolucionario</p>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
-
-                {{--  <div class="row">
-                    <div id="paginator-container" class="col text-center">
-                        
-                    </div>
-                </div>  --}}
+                <div class="text-center">
+                    {{ $products->render() }}
+                </div>
             </div>
-            <!-- Productos2/-->
+            <!-- Productos2-->
         </div>
     </div>
 </section>

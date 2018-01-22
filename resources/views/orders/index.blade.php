@@ -2,72 +2,58 @@
 
 
 @section('content')
+<!--BreadCrumbs-->
+<section id="breadcrumbs-container">
+  <div class="container">
+      <div class="row">
+          <div class="col">
+              <nav class="breadcrumb">
+                  <a href="{{url('/products') }}" class="breadcrumb-item">Catalogos</a>
+                  <span class="breadcrumb-item active">Administrar ordenes</span>
+              </nav>
+          </div>
+      </div>
+  </div>
+</section>
+<!--BreadCrumbs/-->
 
 <div class="container">
-  <div class="panel panel-default">    
-    <div class="panel-body">
-      <h3 class="center">Estadisticas</h3>
-        <div class="row">
-            <div class="col s4 sale-data">
-              <span>{{$totalMonth}} USD</span>
-              Ingresos del {{date('M')}}
-            </div>
-            <div class="col s4   sale-data">
-              <span>{{$totalMonthCount}} USD</span>
-              Numero de {{date('M')}} 
-            </div>
-            <div class="col s4   sale-data">
-              <span> {{$totalSales}} USD</span>
-              Total ingresos
-            </div>
-         </div>
-      <h3 class="center-align">Ventas</h3>
-      <table class="table table-bordered">
-        <thead>
+  <h4 id="table-product">Listado de ordenes</h4>
+    <table class="table table-responsive">
+      <thead>
           <tr>
-            <td>ID. venta</td>
-            <td>Comprador</td>
-            <td>Dirección</td>
-            <td>No. guia</td>
-            <td>Status</td>
-            <td>Fecha de venta</td>
-            <td>Acciones</td>
-          </tr>
-        </thead>
-        <tbody>
-          @foreach ($orders as $order)
-            <tr>
-              <td>{{ $order->id}}</td>
-              <td>{{ $order->recipient_name}}</td>
-              <td>{{ $order->line1}}</td>
-              <td>
-                <a href="#" 
-                   data-type = "text" 
-                   data-pk="{{ $order->id}}" 
-                   data-url="{{route('orders/update', ['id'=>$order->id])}}"
-                   data-title="Numero de guia" 
-                   data-value="{{$order->guide_number}}"
-                   class="set-guide-number"
-                   data-name="guide_number">
-                </a>
-              </td>
-              <td>
-                <a href="#" data-type = "select" 
-                   data-pk="{{$order->id}}" 
-                  data-url="{{route('orders/update', ['id'=>$order->id])}}"
-                   data-title="Numero de guia" 
-                   data-value="{{ $order->status }}"
-                   class="select-status"
-                   data-name="status">
-                </a>
-              </td>
-              <td>{{ $order->created_at}}</td>
+              <td>ID. venta</td>
+              <td>Comprador</td>
+              <td>Dirección</td>
+              <td>Correo</td>
+              <td>Estado</td>
+              <td>Productos</td>
+              <td>Fecha de venta</td>
               <td>Acciones</td>
-            </tr>
+          </tr>
+      </thead>
+      <tbody>
+          @foreach ($orders as $order)
+          <tr>
+            <td>{{ $order->id}}</td>
+            <td>{{ $order->recipient_name}}</td>
+            <td>{{ $order->line1}}</td>
+            <td>{{ $order->email }}</td>
+            
+            <td>{{ $order->states->description }}</td>
+            {{--  Extraemos el nombre del producto por medio del carrito de compras  --}}
+            <td>
+              @foreach ($order->shopping_cart->products as $product) 
+                {{ $product->title}},
+              @endforeach
+            </td>
+            <td>{{ $order->created_at}}</td>
+            <td>
+                <a id="btn-product" href="{{ route('orders.edit', $order->id) }}" class="btn btn-success">Editar</a>
+            </td>
+          </tr>
           @endforeach
-        </tbody>
-      </table>
-    </div>
+      </tbody>
+    </table>
   </div>
-</div>
 @endsection

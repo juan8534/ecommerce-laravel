@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Requests;
 use App\ShoppingCart;
 use App\Paypal;
@@ -52,5 +53,14 @@ class ShoppingCartsController extends Controller
 
          return redirect($payment->getApprovalLink());
 
+    }
+
+    public function orders(request $request){
+        $user = Auth::user()->id;
+        $shopping_cart = $request->shopping_cart;
+        $orders = Order::where('user_id', $user)->get(); //Forma de buscar un carrito sin una llave foranea
+        
+
+        return view('shopping_carts.orders',['shopping_cart'=> $shopping_cart, 'orders' => $orders]);
     }
 }

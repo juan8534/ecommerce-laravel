@@ -1,33 +1,60 @@
 @extends('layouts.app')
 @section('content')
-  <div class="#00897b teal darken-1 white-text">
-    <h4 class="center big-padding">Tu carrito de compras</h4>
-  </div>
+<!--BreadCrumbs-->
+<section id="breadcrumbs-container">
   <div class="container">
-    <table class="responsive-table">
-      <thead>
-        <tr>
-          <td><h5>Producto</h5></td>
-          <td><h5>Precio</h5></td>
-        </tr>
-      </thead>
-      <tbody>
-       @foreach ($products as $product)
-         <tr>
-           <td>{{ $product->title}}</td>
-           <td>{{ $product->pricing}}</td>
-         </tr>
-       @endforeach
-       <tr>
-         <td>Total</td>
-         <td>{{ $total }}</td>
-       </tr>
-      </tbody>
-    </table>
-    <br>
-    <br>
-    <div class="right-align">
-      @include('shopping_carts.form')
-    </div>
+      <div class="row">
+          <div class="col">
+              <nav class="breadcrumb">
+                  <a href="{{url('/catalogs') }}" class="breadcrumb-item">Catálogo</a>
+                  <span class="breadcrumb-item active">Mi carrito de compras</span>
+              </nav>
+          </div>
+      </div>
   </div>
+</section>
+<!--BreadCrumbs/-->
+
+  <div class="container">
+    <h3>Carrito de compras</h3>
+    @foreach ($products as $product)
+      <div class="row total-cart">
+          <div class="col-12 col-md-4 offset-md-0">
+              @foreach ($product->images as $image)
+                <img src="{{ asset('images/products_images/'.$image->name )}}" class="card-img-top img-fluid">        
+              @endforeach
+          </div>
+          <div class="col-12 col-md-4 offset-md-0">
+              <h4>Nombre del producto</h4>
+              <h5>{{$product->title}}</h5>
+              <h5 class="total-description">Descripción</h5>
+              <p>{{ $product->description }}</p>
+          </div>
+          <div class="col-12 col-md-4 offset-md-0">
+              <h4>Precio</h4>
+              <h5>{{ $product->pricing }}</h5>
+          </div>
+      </div>
+      @endforeach
+      <div class="row">
+          <div class="col-12 col-md-4 offset-md-0">
+              
+          </div>
+          <div class="col-12 col-md-4 offset-md-0">
+          </div>
+          <div class="col-12 col-md-4 offset-md-0">
+            <div class="row">
+              <div class="col-6 col-md-6">
+                  <h4 class="total-container">Total</h4>
+                  <h5>{{ $total }}</h5>
+              </div>
+              <div class="col-6 col-md-6">
+                  <div class="total-button">
+                      @include('shopping_carts.form')
+                  </div>
+              </div>
+            </div>
+          </div>
+      </div>
+</div>  
 @endsection

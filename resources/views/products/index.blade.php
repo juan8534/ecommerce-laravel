@@ -57,6 +57,13 @@
             @endforeach
         </tbody>
     </table>
+    <!--Paginador-->
+    <div class="text-center">
+        {{ $products->render() }}
+    </div>
+    <!--Paginador-->
+    <a id="crarProducto" href="{{ route('products.create')}}" class="btn btn-compumundo">Crear Producto</a>
+   
 </div>
 @endsection
 

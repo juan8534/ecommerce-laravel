@@ -3,6 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests;
+use App\Http\Controllers\Controller;
+use App\Product;
+use App\Category;
+use App\Image;
 
 class CatalogsController extends Controller
 {
@@ -11,9 +16,18 @@ class CatalogsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view("catalogs.index");
+        //dd($request->get('title'));
+        $categories = Category::all();
+        $products = Product::search($request->title)->orderBy('id', 'DESC')->paginate(6);
+        $products->each(function($products){
+            $products->category;
+            $products->images;
+        });
+        /* dd($categories); */
+        return view('catalogs.index')->with('categories',$categories)
+        ->with('products',$products);
     }
 
     /**
@@ -25,6 +39,12 @@ class CatalogsController extends Controller
     {
         //
     }
+
+    /**
+     * Show the products with the categorys.
+     *
+     * @return \Illuminate\Http\Response
+     */
 
     /**
      * Store a newly created resource in storage.
@@ -45,7 +65,10 @@ class CatalogsController extends Controller
      */
     public function show($id)
     {
-        //
+        $products = Product::find($id);
+        $products->category;
+        $categories = Category::orderBy('name','DESC')->pluck('name','id'); //Esto es una lista y no un objeto
+        return view('catalogs.show')->with('products',$products);
     }
 
     /**
@@ -81,4 +104,19 @@ class CatalogsController extends Controller
     {
         //
     }
+
+    public function searchCategory($name)
+    {
+        $category = Category::searchCategory($name)->first();
+        $categories = Category::all();
+        $products = $category->products()->paginate(6);
+        $products->each(function($products){
+            $products->category;
+            $products->images;
+        });
+        return view('catalogs.index')
+        ->with('products',$products)
+        ->with('categories',$categories);
+    }
+
 }

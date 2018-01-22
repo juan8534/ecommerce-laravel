@@ -37,4 +37,10 @@ class Product extends Model
     {
         return $this->belongsTo('App\User');
     }
+
+    public function scopeSearch($query, $title)
+    {
+      
+      return $query->where('title', 'LIKE', "%$title%");
+    }
 }

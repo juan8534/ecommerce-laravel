@@ -39,7 +39,28 @@
                     </div>
                     <div class="col-6 align-self-center text-right">
                         <button class="navbar-toggler pull-xs-right hidden-md-up" data-toggle="collapse" data-target="#navMenu"  aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">&#9776;</button>
-                        <a id="login"class="hidden-xs-down font-weight-bold"href="{{ url('/login') }}">Login</a>
+                        {{--  <a id="login"class="hidden-xs-down font-weight-bold"href="{{ url('/login') }}">Login</a>  --}}
+                        <div class="dropdown pull-right hidden-xs-down font-weight-bold">
+                            @if (Auth::guest())
+                            <button class="btn btn-compumundo dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Inicio
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" href="{{ url('/login') }}">Login</a>
+                                <a class="dropdown-item" href="{{ url('/register') }}">Registrarse</a>
+                            </div>
+                            @else
+                            <button class="btn btn-compumundo dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                {{ Auth::user()->name }}
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" href="{{ url('/logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">Cerrar sesion</a>
+                                <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
+                                    {{ csrf_field() }}
+                                </form>            
+                            </div>
+                            @endif
+                        </div>
                     </div>
                 </div>
             </div>
@@ -52,47 +73,62 @@
                 <div class="navbar-collapse collapse" id="navMenu">
                     <div class="container">
                         <div class="row">
-                            <div class="col-10 offset-1 col-sm-6 col-md-4 offset-md-0">
+                            <div class="col-10 offset-1 col-sm-8 col-md-4 offset-md-0">
                                 <ul class="navbar-nav">
                                     <li class="nav-item text-center">
                                         <a href="{{ url('/') }}" class="nav-link active">Home</a>
                                     </li>
+                                    @if (Auth::guest())
                                     <li class="nav-item text-center">
                                         <a href="{{ url('/') }}" class="nav-link active hidden-sm-up">Login</a>
                                     </li>
+                                    @endif
                                     <li class="nav-item text-center">
                                         <a href="{{url('/catalogs') }}" class="nav-link">Catálogo</a>
                                     </li>
                                     <li>
-                                        <i id="icon-car" class="fa fa-shopping-cart" aria-hidden="true"></i>
+                                        <i id="icon-car" class="fa fa-shopping-cart hidden-xs-down" aria-hidden="true"></i>
                                     </li>
                                     <li class="nav-item text-center">
-                                        <a href="#" class="nav-link">Carrito</a>
+                                        <a href="{{ url('/carrito') }}" class="nav-link">Carrito</a>
                                     </li>
                                     <li class="nav-item text-center">
-                                        <a href="#" class="nav-link">Ordenes</a>
+                                        <a href="{{ url('/carrito') }}" class="nav-link circle-shopping-cart hidden-xs-down" class="">{{ $productsCount}}</a>
                                     </li>
+                                    @if (Auth::check())
                                     <li class="nav-item text-center">
-                                        <a href="#" class="nav-link">Usuarios</a>
+                                        <a href="{{ url('/compras') }}" class="nav-link">Pedidos</a>
                                     </li>
-                                    <li class="nav-item text-center">
-                                        <a href="{{ url('/') }}" class="nav-link active">Productos</a>
-                                    </li>
+                                        @if (Auth::user()->id_profile == "1")
+                                        <li class="nav-item text-center">
+                                            <a href="{{ url('/orders') }}" class="nav-link">Ordenes</a>
+                                        </li>
+                                        <li class="nav-item text-center">
+                                            <a href="{{ url('/users') }}" class="nav-link">Usuarios</a>
+                                        </li>
+                                        <li class="nav-item text-center">
+                                            <a href="{{ url('/products') }}" class="nav-link">Productos</a>
+                                        </li>
+                                        <li class="nav-item text-center">
+                                            <a href="{{ url('/products') }}" class="nav-link">Stock</a>
+                                        </li>
+                                        @endif
+                                    @endif
                                 </ul>
                             </div>
-                            <div class="col-12 col-md-6 offset-md-2 hidden-xs-down">
-                                <form>
-                                    <div class="input-group">
-                                        <input type="text" class="form-control" 
-                                        placeholder="¿Encontró lo que buscaba?">
-                                        <span class="inout-group-btn">
-                                            <button class="btn btn-compumundo" type="button">
-                                                <span class="hidden-sm-down">Buscar</span>
-                                                <i class="fa fa-search hidden-md-up"></i>
-                                            </button>
-                                        </span>
-                                    </div>
-                                </form>
+                            <div class="col-12 col-md-4 offset-md-4 hidden-xs-down">
+                                {!! Form::open(['route'=>'catalogs.index', 'method' => 'GET','role' => 'search'])!!}
+                                <div class="input-group">
+                                {!! Form::text('title', null, ['class' => 'form-control','placeholder' =>
+                                '¿Encontro lo que buscaba?..','aria-describedby' => 'search'])!!}
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-compumundo" type="submit">
+                                            <span class="hidden-sm-down">Buscar</span>
+                                            <i class="fa fa-search hidden-md-up"></i>
+                                        </button>
+                                    </span>
+                                </div>
+                                {!! Form::close()!!}
                             </div>
                         </div>
                     </div>

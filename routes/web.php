@@ -15,11 +15,33 @@ Route::get('/', 'MainController@home'); //Ruta generada para la vista principal
 
 Route::get('/carrito', 'ShoppingCartsController@index');
 Route::post('/carrito', 'ShoppingCartsController@checkout');
-Route::get('/catalogs','CatalogsController@index');
+
+/* Route::get('/catalogs','CatalogsController@index'); */
+
+
+/*Ruta para filtrar por categorias */
+
+
+
+
+Route::resource('catalogs','CatalogsController');
+
+Route::get('producto/{name}',[
+      'uses' => 'CatalogsController@searchCategory',
+      'as'   => 'search.category'
+]);
+
+/* Route::get('catalogs/{id}',[
+      'uses' => 'CatalogsController@show',
+      'as'   => 'view.product'
+]); */
+
 Auth::routes();
+
 /* Route::get('products/{id}', 'ProductsController@show');  */
 
 /* Route::get('products/{id}', 'ProductsController@show'); */
+Route::get('compras', 'ShoppingCartsController@orders');
 Route::resource('compras', 'ShoppingCartsController',[
       'only' => ['show'] //Ruta para mostar el link con la informacion del cliente
 ]);
@@ -53,28 +75,10 @@ Route::delete('categories/{id}/destroy',[
       'as'   => 'categories.destroy'
 ]);
 
-Route::resource('orders', 'OrdersController', [
-      'only' => ['index']
-]);
+Route::resource('orders', 'OrdersController');
 
 Route::post('orders/update/{id}', ['as' => 'orders/update', 'uses' => 'OrdersController@update']);
 
 });      
 Route::get('/home', 'HomeController@index');
 
-
-/* Route::get('products/images/{filename}', function($filename){
-      $path = storage_path("app/images/$filename");
-
-      if (!\File::exists($path)) abort(404);
-
-      $file = \File::get($path);
-
-      $type = \File::mimeType($path);
-
-      $response = Response::make($file, 200);
-
-      $response->header("Content-Type", $type);
-
-      return $response;
-}); */

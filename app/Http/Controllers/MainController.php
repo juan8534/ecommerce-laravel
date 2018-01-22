@@ -12,7 +12,7 @@ class MainController extends Controller
 {
     public function home()
     {
-        $products = Product::latest()->paginate(4);
+        $products = Product::orderBy('id', 'DESC')->take(3)->get();
 
         return view('main.home', ["products" => $products]);
     }
