@@ -33,6 +33,12 @@
           <div class="col-12 col-md-4 offset-md-0">
               <h4>Precio</h4>
               <h5>{{ $product->pricing }}</h5>
+              @if($product->discount_start_date <= date('Y-m-d') and $product->discount_end_date >= date('Y-m-d') )
+                    <p class="card-text">${{ $product->discount_value}} Descuento</p>
+                    <p class="card-text">${{ $product->pricing - $product->discount_value}} Valor con descuento</p>
+                @else
+                    <p class="card-text">No aplica descuento</p>
+                @endif
           </div>
       </div>
       @endforeach
@@ -46,7 +52,8 @@
             <div class="row">
               <div class="col-6 col-md-6">
                   <h4 class="total-container">Total</h4>
-                  <h5>{{ $total }}</h5>
+                  @php ($discount =  $products->sum('discount_value'))
+                  <h5>{{ $total-$discount }}</h5>
               </div>
               <div class="col-6 col-md-6">
                   <div class="total-button">

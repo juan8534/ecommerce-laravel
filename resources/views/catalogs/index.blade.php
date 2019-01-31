@@ -63,6 +63,14 @@
                             <div class="card-block">
                                 <h4 class="card-title">{{ $product->title }}</h4>
                                 <p class="card-text">${{ $product->pricing}} dolares</p>
+                             <!--   @if($product->discount_value > 0)
+                                <p class="card-text">${{ $product->discount_value}} Descuento</p>
+                                @endif-->
+                                @if($product->discount_start_date <= date('Y-m-d') and $product->discount_end_date >= date('Y-m-d') )
+                                <p class="card-text">${{ $product->discount_value}} Descuento</p>
+                                @else
+                                <p class="card-text">No aplica descuento</p>
+                                @endif
                             </div>
                         </div>
                     </div>

@@ -8,7 +8,8 @@ class Product extends Model
 {   
     protected $table = "products";
 
-    protected $fillable = ['title','description','pricing','category_id'];
+    protected $fillable = ['title','description','pricing','category_id',
+                           'discount_start_date','discount_end_date','discount_value'];
 
     public function scopeLatest($query){
         return $query->orderBy('id','desc');

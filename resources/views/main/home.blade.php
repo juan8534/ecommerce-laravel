@@ -29,7 +29,7 @@
                                 <h4>{{ $product->title }}</h4>
                                 <p class="hidden-sm-down">{{ $product->description }}</p>
                             </div>
-                        </div>
+                    </div>
                     @endforeach
                 </div>
                     <a class="carousel-control-prev" href="#productosCarousel" role="button" data-slide="prev">

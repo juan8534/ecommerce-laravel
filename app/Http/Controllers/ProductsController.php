@@ -26,7 +26,7 @@ class ProductsController extends Controller
     public function index()
     {
         //Se crea una variable products para tener los datos del modelo Product con el metodo all()
-        $products = Product::orderBy('id', 'ASC')->paginate(6);
+        $products = Product::orderBy('id', 'DESC')->paginate(6);
         $products->each(function($products){
           $products->image;
         });
@@ -41,7 +41,7 @@ class ProductsController extends Controller
     public function create()
     {
       $product = new Product;
-      $category = Category::orderby('name','ASC')->pluck('name','id');
+      $category = Category::orderby('name','DESC')->pluck('name','id');
       
       return view('products.create')
       ->with('product', $product)
@@ -120,6 +120,9 @@ class ProductsController extends Controller
       $product->title = $request->title;
       $product->description = $request->description;
       $product->pricing = $request->pricing;
+      $product->discount_start_date	 = $request->discount_start_date;
+      $product->discount_end_date	 = $request->discount_end_date;
+      $product->discount_value = $request->discount_value;
 
       if($product->save()){
         Alert::success('Producto editado correctamente!!!');          

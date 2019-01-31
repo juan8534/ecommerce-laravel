@@ -34,6 +34,12 @@
                 <p>{{ $products->description }}</p>
                 <h5>Precio:</h5>
                 <p>{{ $products->pricing }} dolares</p>
+                @if($products->discount_start_date <= date('Y-m-d') and $products->discount_end_date >= date('Y-m-d') )
+                    <p class="card-text">${{ $products->discount_value}} Descuento</p>
+                    <p class="card-text">${{ $products->pricing - $products->discount_value}} Valor con descuento</p>
+                @else
+                    <p class="card-text">No aplica descuento</p>
+                @endif
                 {!! Form::open(['url' => '/in_shopping_carts', 'method' => 'POST', "class" => "add-to-cart inline-block"]) !!}
                   <input type="hidden" name="product_id" value="{{ $products->id }}">
                   <button class="btn btn-success" type="submit" name="action">

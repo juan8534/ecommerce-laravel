@@ -20,6 +20,13 @@
           'placeholder'=>'Seleccione una categoria', 'required'])!!}
           <h5>Descripción del producto</h5>
           {!! Form::textarea('description',$product->description,['class' => 'form-control input-user','required']) !!} 
+          <h5>Fecha comienzo descuento</h5>
+            {!! Form::date('discount_start_date',$product->discount_start_date,['class' => 'form-control input-user','required']) !!}
+            <h5>Fecha fin descuento</h5>
+            {!! Form::date('discount_end_date',$product->discount_end_date,['class' => 'form-control input-user','required']) !!}
+            <h5>Valor descuento</h5>
+            {!! Form::number('discount_value',$product->discount_value,['class' => 'form-control input-user',
+            'placeholder'=>'Ingrese el descuento del producto', 'required']) !!} 
           <a href="{{url('/products')}}" class="btn btn-danger btn-product">
             VOLVER
           </a>
