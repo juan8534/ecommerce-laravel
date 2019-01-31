@@ -14,7 +14,7 @@
           {!! Form::email('email', null, ['class'=>'form-control input-user',
             'placeholder'=>'correo@correo.com', 'required'])!!}
           <h5>Contraseña</h5>
-          <input type="password" class="form-control input-user" required>
+          <input type="password" name="password" class="form-control input-user" required>
           <h5>Perfil</h5>
           {!! Form::select('id_profile', $profile, null, ['class'=>'form-control select-category input-user',
           'placeholder'=>'Seleccione una categoria', 'required'])!!}

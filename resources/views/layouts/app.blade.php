@@ -109,9 +109,6 @@
                                         <li class="nav-item text-center">
                                             <a href="{{ url('/products') }}" class="nav-link">Productos</a>
                                         </li>
-                                        <li class="nav-item text-center">
-                                            <a href="{{ url('/products') }}" class="nav-link">Stock</a>
-                                        </li>
                                         @endif
                                     @endif
                                 </ul>
