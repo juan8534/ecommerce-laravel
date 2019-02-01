@@ -25,9 +25,10 @@ Luego de importar la base de datos de manera local procedemos a entrar desde un 
  
  por medio de este comando se descargaran todas las dependencias de nuestro proyecto.
  
+ ## Correr servidor de aplicaciones
+ 
  Una vez descargadas todas las dependencias y configurada la conexion a nuestra base de datos ejecutamos el siguiente comando:
  
- ## Correr servidor de aplicaciones
  **php artisan run serve**
  
  se nos mostrara una url con su respectivo puerto al cual podremos acceder.
