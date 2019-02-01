@@ -36,6 +36,8 @@
               @if($product->discount_start_date <= date('Y-m-d') and $product->discount_end_date >= date('Y-m-d') )
                     <p class="card-text">${{ $product->discount_value}} Descuento</p>
                     <p class="card-text">${{ $product->pricing - $product->discount_value}} Valor con descuento</p>
+			  <h5>Fecha vencimiento descuento</h5>
+			  <p class="card-text">{{ $product->discount_end_date }}</p>
                 @else
                     <p class="card-text">No aplica descuento</p>
                 @endif

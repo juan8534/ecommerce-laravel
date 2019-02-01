@@ -103,6 +103,9 @@
                                         <li class="nav-item text-center">
                                             <a href="{{ url('/orders') }}" class="nav-link">Ordenes</a>
                                         </li>
+										<li class="nav-item text-center">
+                                            <a href="{{ url('/categories') }}" class="nav-link">Categorias</a>
+                                        </li>
                                         <li class="nav-item text-center">
                                             <a href="{{ url('/users') }}" class="nav-link">Usuarios</a>
                                         </li>
