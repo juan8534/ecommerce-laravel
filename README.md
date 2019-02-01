@@ -9,11 +9,11 @@ Luego de tener todas las dependencias descargamos el repositorio y nos dirigimos
 
 Luego de importar la base de datos de manera local procedemos a entrar desde un terminal a la raiz del proyecto:
 
-D:\ecommerce-laravel
+** D:\ecommerce-laravel **
  
  y digitamos el siguiente comando:
  
- composer update
+ ** composer update **
  
  por medio de este comando se descargaran todas las dependencias de nuestro proyecto.
  
