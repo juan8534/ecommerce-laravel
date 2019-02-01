@@ -1,11 +1,11 @@
 # ecommerce-laravel
 
-Dependencias:
+Programas necesarios:
 -php version 5.6
 -composer
 -mysql 5.6
 
-Luego de tener todas las dependencias descargamos el repositorio y nos dirigimos a la carpeta llamada **base-de-datos** e importamos la base de datos.Nos dirigimos hasta el proyecto y modificamos el archivo .env que contiene la conexion a nuestra base de datos modificando los siguientes valores:
+Descargamos el repositorio y nos dirigimos a la carpeta llamada **base-de-datos** e importamos la el arhivo sql a nuestro motor de BD.Nos dirigimos hasta el proyecto y modificamos el archivo .env que contiene la conexion a nuestra base de datos modificando los siguientes valores:
 ```
 DB_CONNECTION=mysql
 DB_HOST="nombre de nuestro host" (localhost)
